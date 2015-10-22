@@ -242,8 +242,9 @@ def env_change_test():
 
 
 def main():
+    from nose.plugins.multiprocess import MultiProcess
     with start_mzbench_server():
-        if not nose.run(defaultTest=__name__):
+        if not nose.run(defaultTest=__name__, addplugins=[MultiProcess()]):
             raise RuntimeError("some tests failed")
 
 
